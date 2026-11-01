@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { CONTACT_EMAIL, NAV_LINKS, SIGNUP_HREF, SOCIALS, TAGS } from '../../shared/site-content';
 
 @Component({
   selector: 'app-footer',
+  imports: [RouterLink],
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  styleUrl: './footer.component.scss'
 })
-export class FooterComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class FooterComponent {
+  readonly year = new Date().getFullYear();
+  readonly links = NAV_LINKS;
+  readonly socials = SOCIALS;
+  readonly tags = TAGS;
+  readonly email = CONTACT_EMAIL;
+  readonly signupHref = SIGNUP_HREF;
 }

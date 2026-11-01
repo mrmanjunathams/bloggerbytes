@@ -1,0 +1,40 @@
+<header class="gallery-header">
+    <div class="container text-center">
+        <span class="eyebrow" appReveal>Image pool</span>
+        <h1 class="section-title" [appReveal]="100">Choose the perfect picture</h1>
+        <p class="section-lead" [appReveal]="200">High-resolution, easy-to-use pictures for your next post. Click any
+            image to view it full size.</p>
+    </div>
+</header>
+
+<section class="container pb-5">
+    <div class="masonry">
+        @for (photo of photos; track photo.thumb; let i = $index) {
+            <button type="button" class="tile" (click)="open(i)" [attr.aria-label]="'Open image ' + (i + 1)">
+                <img [src]="photo.thumb" alt="" loading="lazy">
+                <span class="material-icons">zoom_in</span>
+            </button>
+        }
+    </div>
+
+    <div class="text-center py-5">
+        <p class="section-lead mb-4">Found the one? Start your blog and make it yours.</p>
+        <a class="btn btn-brand btn-lg" [href]="signupHref">Start writing</a>
+    </div>
+</section>
+
+@if (activePhoto(); as photo) {
+    <div class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" (click)="close()">
+        <img [src]="photo.full" alt="" (click)="$event.stopPropagation()">
+        <button type="button" class="lb-btn lb-close" aria-label="Close" (click)="close()">
+            <span class="material-icons">close</span>
+        </button>
+        <button type="button" class="lb-btn lb-prev" aria-label="Previous image" (click)="step(-1); $event.stopPropagation()">
+            <span class="material-icons">chevron_left</span>
+        </button>
+        <button type="button" class="lb-btn lb-next" aria-label="Next image" (click)="step(1); $event.stopPropagation()">
+            <span class="material-icons">chevron_right</span>
+        </button>
+        <span class="lb-count">{{ active()! + 1 }} / {{ photos.length }}</span>
+    </div>
+}

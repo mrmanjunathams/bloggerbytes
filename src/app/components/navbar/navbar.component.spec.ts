@@ -1,13 +1,5 @@
-import { LayoutModule } from '@angular/cdk/layout';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatButtonModule,
-  MatIconModule,
-  MatListModule,
-  MatSidenavModule,
-  MatToolbarModule,
-} from '@angular/material';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { NavbarComponent } from './navbar.component';
 
@@ -15,28 +7,34 @@ describe('NavbarComponent', () => {
   let component: NavbarComponent;
   let fixture: ComponentFixture<NavbarComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [NavbarComponent],
-      imports: [
-        NoopAnimationsModule,
-        LayoutModule,
-        MatButtonModule,
-        MatIconModule,
-        MatListModule,
-        MatSidenavModule,
-        MatToolbarModule,
-      ]
-    }).compileComponents();
-  }));
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [NavbarComponent],
+      providers: [provideRouter([])]
+    })
+    .compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
   });
 
   it('should compile', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should toggle the mobile menu', async () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    const toggler = compiled.querySelector<HTMLButtonElement>('.navbar-toggler')!;
+    const menu = compiled.querySelector('.navbar-collapse')!;
+
+    toggler.click();
+    await fixture.whenStable();
+    expect(menu.classList).toContain('show');
+    expect(toggler.getAttribute('aria-expanded')).toBe('true');
+
+    compiled.querySelector<HTMLAnchorElement>('.nav-link')!.click();
+    await fixture.whenStable();
+    expect(menu.classList).not.toContain('show');
   });
 });

@@ -1,112 +1,179 @@
-<div>
-    <div class="parallax s1">
-        <h2 style="font-family: 'Anton', sans-serif;color: black;">Publish your passions, your way</h2>
-        <h5 style="font-family: 'Fjalla One', sans-serif;color: black;">Create a unique and beautiful blog. It’s easy
-            and free.</h5><br>
-
-        <button mat-button>GET STARTED</button>
-        <br><br><br><br><br>
-        <div class="body">
-            <div class="indicator">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div><br><br><br><br>
-    </div>
-
-    <div class="parallax s2">
-        <br><br>
-        <h4 style="font-family: 'Lobster', cursive;">Some intresting facts about Bloggerbytes</h4><br>
-        <div style="background-color:Aliceblue">
-            <div class="row analytics">
-                <div class="col s3" style="text-align:center;background-color:Aliceblue;">
-                    <h3>1 MILLION+</h3>
-                    <h5>Visiters to site</h5>
-                </div>
-                <div class="col s3" style="text-align:center;background-color:Aliceblue;">
-                    <h3>400K +</h3>
-                    <h5>Bloggers over world</h5>
-                </div>
-                <div class="col s3" style="text-align:center;background-color:Aliceblue;">
-                    <h3>15 +</h3>
-                    <h5>Categories</h5>
-                </div>
-                <div class="col s3" style="text-align:center;background-color:Aliceblue;">
-                    <h3>4.7/5</h3>
-                    <h5>Star rating by our users</h5>
-                </div>
-            </div>
-        </div>
-        <br>
-        <a href="https://www.facebook.com/Bloggerbytes-319605895260048/" class="btn-floating"
-            style="margin-left: 38%;font-family: 'Fjalla One', sans-serif;"><i class="fa fa-facebook"></i></a>
-        <a href="https://twitter.com/bloggerbytes" class="btn-floating"
-            style="font-family: 'Fjalla One', sans-serif;"><i class="fa fa-twitter"></i></a>
-        <a href="https://t.me/bloggerbytes" class="btn-floating" style="font-family: 'Fjalla One', sans-serif;"><i
-                class="fa fa-telegram"></i></a>
-        <a href="mailto:bloggerbytesinfo@gmail.com?subject=subject&cc=cc@example.com" class="btn-floating"
-            style="font-family: 'Fjalla One', sans-serif;"><i class="fa fa-envelope"></i></a>
-        <br><br><br>
-    </div>
-
-
-    <div class="about">
-        <div class="sub-about" style="margin:0 20% 0 20%;">
-            <br><br><br>
-            <h3 style="font-family: 'Kumar One Outline', cursive;"><b>About Us</b></h3>
-            <h6 style="text-align: justify; font-size: 18px;font-family: 'Varela Round', sans-serif;">At Bloggerbytes,
-                we believe there is a better way to do market or express yourself is important. A more valuable, less
-                invasive way where peoples are sharing of information rather than searching. We're obsessively
-                passionate about it, and our mission is to help people achieve it. We focus on varies categories of
-                blogs like art, sciencs, travelling...etc. It's one of the least understood and least transparent
-                aspects of great blogging, and we see that as an opportunity: We're excited to simplify blogging for
-                everyone through our application.</h6><br>
-            <h6 style="text-align: justify; font-size: 18px;font-family: 'Varela Round', sans-serif;">Bloggerbytes is an
-                always one blogging platform for all bloggers. We make innovative, beautiful way to represent you that
-                empower those passions to find more intending.</h6><br><br>
-            <br><br><br><br>
+<!-- Hero -->
+<section id="home" class="hero">
+    <div class="container hero-content">
+        <span class="eyebrow text-white-50" appReveal>Welcome to Bloggerbytes</span>
+        <h1 class="hero-title" [appReveal]="100">Publish your passions, <em>your way.</em></h1>
+        <p class="hero-lead" [appReveal]="200">Create a unique and beautiful blog. It’s easy and free.</p>
+        <div class="d-flex flex-wrap gap-3 justify-content-center" [appReveal]="300">
+            <a class="btn btn-brand btn-lg" [href]="signupHref">Get started — it’s free</a>
+            <a class="btn btn-ghost btn-lg" routerLink="/gallery">
+                <span class="material-icons">photo_library</span>Explore the image pool
+            </a>
         </div>
     </div>
+    <a routerLink="/" fragment="features" class="scroll-cue" aria-label="Scroll to features">
+        <span class="material-icons">expand_more</span>
+    </a>
+</section>
 
+<!-- Facts -->
+<div class="container facts-wrap">
+    <div class="facts" appReveal>
+        @for (fact of facts; track fact.label) {
+            <div class="fact">
+                <strong>{{ fact.value }}</strong>
+                <span>{{ fact.label }}</span>
+            </div>
+        }
+    </div>
+</div>
 
-    <div class="parallax s3">
-        <div class="row">
-            <div class="col s3"></div>
-            <div class="col s6">
-                <div class="card" style="margin: 25% 0 25% 0;">
-                    <div class="card-content white-text">
-                        <span class="card-title">
-                            <h4 style="color:black;font-family: 'Fjalla One', sans-serif;"><b>Choose the perfect
-                                    picture</b></h4>
-                        </span><br>
-                        <p
-                            style="color: black;text-align: justify;font-family: 'Fjalla One', sans-serif; margin: 0 20% 0 20%;">
-                            <b>Create a beautiful blog that fits your style. Choose from a selection of easy-to-use
-                                pictures – all with flexible resolution and hundreds of images to design something
-                                new.</b></p>
-                        <br><br>
-                        <a href="#!gallery" class="waves-effect waves-light btn"
-                            style="font-family: 'Fjalla One', sans-serif;">IMAGE POOL</a>
+<!-- Features -->
+<section id="features" class="section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="eyebrow" appReveal>Why Bloggerbytes</span>
+            <h2 class="section-title" [appReveal]="100">Everything you need to start writing</h2>
+            <p class="section-lead" [appReveal]="200">A better way to express yourself: more valuable, less invasive, and
+                built around sharing rather than searching.</p>
+        </div>
+        <div class="row g-4">
+            @for (feature of features; track feature.title; let i = $index) {
+                <div class="col-sm-6 col-lg-3" [appReveal]="i * 100">
+                    <div class="feature-card">
+                        <span class="feature-icon material-icons">{{ feature.icon }}</span>
+                        <h3>{{ feature.title }}</h3>
+                        <p>{{ feature.text }}</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Categories -->
+<section id="categories" class="section section-alt">
+    <div class="container">
+        <div class="d-md-flex justify-content-between align-items-end mb-5">
+            <div>
+                <span class="eyebrow" appReveal>Categories</span>
+                <h2 class="section-title mb-md-0" [appReveal]="100">Whatever moves you</h2>
+            </div>
+            <p class="section-lead mb-0" [appReveal]="200">From art and science to travel and family — over 15
+                categories, and a home for every story.</p>
+        </div>
+        <div class="category-grid">
+            @for (category of categories; track category.name; let i = $index) {
+                <div class="category" [appReveal]="(i % 4) * 80">
+                    <img [src]="category.image" [alt]="category.name" loading="lazy">
+                    <span>{{ category.name }}</span>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section id="about" class="section">
+    <div class="container">
+        <div class="row g-4 g-lg-5 align-items-center">
+            <div class="col-lg-6" appReveal>
+                <div class="about-media">
+                    <img src="assets/web/about.webp" alt="The Bloggerbytes team at work" loading="lazy">
+                    <div class="about-badge">
+                        <span class="material-icons">favorite</span>
+                        <div><strong>Made with passion</strong><small>since 2018</small></div>
                     </div>
                 </div>
             </div>
-            <div class="col s3"></div>
+            <div class="col-lg-6">
+                <span class="eyebrow" appReveal>About us</span>
+                <h2 class="section-title" [appReveal]="100">Simplifying blogging for everyone</h2>
+                <p class="about-text" [appReveal]="200">At Bloggerbytes, we believe there is a better way to market or
+                    express yourself. A more valuable, less invasive way where people share information rather than
+                    search for it. We’re obsessively passionate about it, and our mission is to help people achieve
+                    it.</p>
+                <p class="about-text" [appReveal]="300">Blogging is one of the least understood and least transparent
+                    parts of the web, and we see that as an opportunity. Bloggerbytes is an all-in-one platform that
+                    gives your passions an innovative, beautiful home — and helps them find their audience.</p>
+                <ul class="about-points" [appReveal]="400">
+                    <li><span class="material-icons">check_circle</span>Free forever for personal blogs</li>
+                    <li><span class="material-icons">check_circle</span>Art, science, travel and more</li>
+                    <li><span class="material-icons">check_circle</span>A growing community of readers</li>
+                </ul>
+            </div>
         </div>
     </div>
+</section>
 
-
-    <div class="join">
-        <div class="sub-join" style="margin-top: -20px;">
-            <br><br><br><br>
-            <h3>Join millions of others</h3>
-            <h6>Whether sharing your expertise, breaking news, or whatever’s on<br> your mind, you’re in good company on
-                Blogger. Sign up to discover <br>why millions of people have published their passions here.</h6><br>
-            <a href="#!blog" class="waves-effect waves-light btn" style="font-family: 'Fjalla One', sans-serif;	"><i
-                    class="material-icons left">local_offer</i>GET STARTED</a><br><br><br>
+<!-- Image pool teaser -->
+<section id="gallery" class="section section-alt">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="eyebrow" appReveal>Image pool</span>
+            <h2 class="section-title" [appReveal]="100">Choose the perfect picture</h2>
+            <p class="section-lead" [appReveal]="200">Easy-to-use pictures with flexible resolution — hundreds of images
+                to design something new.</p>
+        </div>
+        <div class="pool-grid" appReveal>
+            @for (photo of pool; track photo.thumb) {
+                <a routerLink="/gallery" class="pool-item">
+                    <img [src]="photo.thumb" alt="Image from the Bloggerbytes image pool" loading="lazy">
+                </a>
+            }
+        </div>
+        <div class="text-center mt-5" appReveal>
+            <a routerLink="/gallery" class="btn btn-outline-brand">Browse the full image pool
+                <span class="material-icons">arrow_forward</span></a>
         </div>
     </div>
+</section>
 
-</div>
+<!-- Blog -->
+<section id="blog" class="section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="eyebrow" appReveal>From the blog</span>
+            <h2 class="section-title" [appReveal]="100">Recent posts</h2>
+        </div>
+        <div class="row g-4">
+            @for (post of posts; track post.title; let i = $index) {
+                <div class="col-md-6 col-lg-4" [appReveal]="i * 100">
+                    <article class="post-card">
+                        <div class="post-media">
+                            <img [src]="post.image" [alt]="post.title" loading="lazy">
+                            <span class="post-tag">{{ post.tag }}</span>
+                        </div>
+                        <div class="post-body">
+                            <time [attr.datetime]="post.date">{{ post.date | date: 'mediumDate' }}</time>
+                            <h3>{{ post.title }}</h3>
+                            <p>{{ post.excerpt }}</p>
+                        </div>
+                    </article>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Join -->
+<section id="join" class="join">
+    <div class="container text-center">
+        <h2 class="section-title text-white" appReveal>Join millions of others</h2>
+        <p class="join-lead" [appReveal]="100">Whether you’re sharing your expertise, breaking news, or whatever’s on your
+            mind, you’re in good company on Bloggerbytes. Sign up to discover why millions of people have published
+            their passions here.</p>
+        <div class="d-flex flex-wrap gap-3 justify-content-center" [appReveal]="200">
+            <a class="btn btn-brand btn-lg" [href]="signupHref">
+                <span class="material-icons">edit</span>Start your blog
+            </a>
+        </div>
+        <div class="socials" [appReveal]="300">
+            @for (social of socials; track social.label) {
+                <a [href]="social.href" [attr.aria-label]="social.label" target="_blank" rel="noopener">
+                    <i [class]="social.icon"></i>
+                </a>
+            }
+        </div>
+    </div>
+</section>
